@@ -1,3 +1,4 @@
+
 ALTER Table person2 RENAME to person_details;
 SELECT * from person_details;
 
