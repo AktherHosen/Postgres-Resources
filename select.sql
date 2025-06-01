@@ -93,3 +93,53 @@ SELECT COUNT(*) FROM student;
 SELECT avg(age) FROM student;
 
 SELECT max(length(first_name)) FROM student;
+
+-- both are same 
+SELECT * from student
+WHERE NOT country = 'USA';
+SELECT * from student
+WHERE country <> 'USA';
+
+SELECT * from student
+WHERE email IS NOT NULL;
+
+SELECT COALESCE(email, 'Email not provided') from student;
+
+-- both are samme 
+SELECT * from student WHERE country = 'USA' OR country = 'Australia';
+SELECT * from student WHERE country IN ('USA', 'UK');
+SELECT * from student WHERE country NOT IN ('USA', 'UK');
+
+-- range filter
+SELECT * from student WHERE age BETWEEN 19 AND 22;
+SELECT * from student WHERE dob BETWEEN '2000-01-01' AND '2005-12-31';
+
+--LIKE IS CASE SENSITIVE
+SELECT * from student
+WHERE first_name LIKE 'J%';
+
+SELECT * from student
+WHERE first_name LIKE '___a%';
+
+-- ILIKE is case-insensitive version of LIKE
+SELECT * from student
+WHERE first_name ILIKE 'J%';
+
+-- Pagination with Limit Offset and Data Deletion in PostgreSQL
+SELECT * FROM student LIMIT 2;
+
+-- OFFSET means how many he want to discard or skip
+-- pagination works like this
+SELECT * FROM student LIMIT 5 OFFSET 5 * 0;
+SELECT * FROM student LIMIT 5 OFFSET 5 * 1;
+SELECT * FROM student LIMIT 5 OFFSET 5 * 2;
+
+
+SELECT * from student;
+-- delete record from table
+DELETE from student WHERE student_id = 3;
+
+
+UPDATE student SET age = 29, first_name = 'Akther Hosen'
+WHERE student_id = 1
+
