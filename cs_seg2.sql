@@ -52,3 +52,9 @@ END
 $$  LANGUAGE PLPGSQL;
 
 SELECT title, price, apply_discount(price, 10 ) AS discounted_price from books;
+
+CREATE INDEX idx_books_title on books(title);
+SELECT * from books;
+
+CREATE INDEX idx_books_author_price ON books USING KEY ("author_name", "price");
+DROP INDEX idx_books_title;
